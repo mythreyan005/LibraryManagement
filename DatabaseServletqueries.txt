@@ -1,0 +1,38 @@
+AUTHOR TABLE:
+
+create table Author_tbl(
+Author_code Number(5) PRIMARY KEY ,Author_name Varchar2(20) NOT NULL ,Contact_no Number(10));
+insert into Author_tbl values(1,'RobinSharma',880079924);
+insert into Author_tbl values(2,'P.K.Narayanan',397654924);
+insert into Author_tbl values(3,'Paulo coleho',3457896588);
+
+BOOK TABLE:
+
+
+
+
+CREATE TABLE Book_tbl (
+    ISBN        VARCHAR2(10) PRIMARY KEY,
+    Book_title  VARCHAR2(50) NOT NULL,
+    Book_type   CHAR(1) NOT NULL,
+    Author_code NUMBER(5),
+    Book_cost   NUMBER(8,2) NOT NULL,
+
+    CONSTRAINT chk_book_type 
+        CHECK (Book_type IN ('G', 'T')),
+
+    CONSTRAINT fk_author 
+        FOREIGN KEY (Author_code)
+        REFERENCES Author_tbl (Author_code));
+
+INSERT VALUES:
+
+INSERT INTO Book_tbl VALUES ('B001', 'Java Programming',   'T', 1, 550.00);
+INSERT INTO Book_tbl VALUES ('B002', 'Python Basics',     'T', 2, 480.00);
+INSERT INTO Book_tbl VALUES ('B003', 'Data Structures',   'T', 3, 620.00);
+INSERT INTO Book_tbl VALUES ('B004', 'Web Development',   'T', 1, 500.00);
+
+INSERT INTO Book_tbl VALUES ('B005', 'Wings of Fire',      'G', 2, 300.00);
+INSERT INTO Book_tbl VALUES ('B006', 'The Alchemist',     'G', 3, 320.00);
+
+
